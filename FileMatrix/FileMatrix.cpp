@@ -39,6 +39,7 @@ namespace fmatrix {
     {
         std::vector<process_info> find_process(const std::filesystem::path& filePath)
     {
+        OutputDebugString(L"fmatrix::monitor::find_process called.");
         if (filePath.empty() || !std::filesystem::exists(filePath))
         {
             OutputDebugString(L"fmatrix::monitor::find_process got wrong entry. Check file path.");
@@ -89,6 +90,7 @@ namespace fmatrix {
                 rgpi[i].Process.dwProcessId));
         }
         RmEndSession(dwSession);
+        OutputDebugString(L"fmatrix::monitor::find_process finished.");
         return result;
     }
     }
