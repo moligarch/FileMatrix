@@ -72,19 +72,19 @@
   <PropertyGroup Label="UserMacros" />
   <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'">
     <OutDir>$(SolutionDir)build\bin\$(PlatformShortName)\$(Configuration)\</OutDir>
-    <IntDir>$(SolutionDir)build\obj\$(PlatformShortName)\$(Configuration)\</IntDir>
+    <IntDir>$(SolutionDir)build\obj\$(ShortProjectName)\$(PlatformShortName)\$(Configuration)\</IntDir>
   </PropertyGroup>
   <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Release|Win32'">
     <OutDir>$(SolutionDir)build\bin\$(PlatformShortName)\$(Configuration)\</OutDir>
-    <IntDir>$(SolutionDir)build\obj\$(PlatformShortName)\$(Configuration)\</IntDir>
+    <IntDir>$(SolutionDir)build\obj\$(ShortProjectName)\$(PlatformShortName)\$(Configuration)\</IntDir>
   </PropertyGroup>
   <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Debug|x64'">
     <OutDir>$(SolutionDir)build\bin\$(PlatformShortName)\$(Configuration)\</OutDir>
-    <IntDir>$(SolutionDir)build\obj\$(PlatformShortName)\$(Configuration)\</IntDir>
+    <IntDir>$(SolutionDir)build\obj\$(ShortProjectName)\$(PlatformShortName)\$(Configuration)\</IntDir>
   </PropertyGroup>
   <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Release|x64'">
     <OutDir>$(SolutionDir)build\bin\$(PlatformShortName)\$(Configuration)\</OutDir>
-    <IntDir>$(SolutionDir)build\obj\$(PlatformShortName)\$(Configuration)\</IntDir>
+    <IntDir>$(SolutionDir)build\obj\$(ShortProjectName)\$(PlatformShortName)\$(Configuration)\</IntDir>
   </PropertyGroup>
   <ItemDefinitionGroup Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'">
     <ClCompile>
@@ -187,12 +187,18 @@
     </Lib>
   </ItemDefinitionGroup>
   <ItemGroup>
-    <ClInclude Include="FileMatrix.h" />
+    <ClInclude Include="include\FileMatrix.h" />
     <ClInclude Include="pch.h" />
+    <ClInclude Include="include\FileMatrix\fmmonitor.h" />
+    <ClInclude Include="lib\pch.h" />
+    <ClInclude Include="include\FileMatrix\fmread.h" />
+    <ClInclude Include="include\FileMatrix\fmtypes.h" />
+    <ClInclude Include="include\FileMatrix\fmwrite.h" />
   </ItemGroup>
   <ItemGroup>
     <ClCompile Include="FileMatrix.cpp" />
-    <ClCompile Include="pch.cpp">
+    <ClCompile Include="lib\fmmonitor.cpp" />
+    <ClCompile Include="lib\pch.cpp">
       <PrecompiledHeader Condition="'$(Configuration)|$(Platform)'=='Debug|x64'">Create</PrecompiledHeader>
       <PrecompiledHeader Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'">Create</PrecompiledHeader>
       <PrecompiledHeader Condition="'$(Configuration)|$(Platform)'=='Release|Win32'">Create</PrecompiledHeader>
