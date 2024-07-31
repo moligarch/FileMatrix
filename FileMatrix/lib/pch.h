@@ -14,6 +14,7 @@
 #include <fstream>
 #include <iostream>
 #include <filesystem>
+#include <source_location>
 
 #include "Windows.h"
 #include "RestartManager.h"
