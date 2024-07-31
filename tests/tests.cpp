@@ -1,27 +1,53 @@
 #include "pch.h"
 #include "CppUnitTest.h"
-#include "FileMatrix\FileMatrix.h"
+#include "FileMatrix.h"
 
 using namespace Microsoft::VisualStudio::CppUnitTestFramework;
 
-namespace tests
+namespace Monitor
 {
-	TEST_CLASS(Monitor)
+	TEST_CLASS(FindProces)
 	{
 	public:
-		
-        TEST_METHOD(FindProcess)
+        TEST_METHOD(Pass)
         {
-            std::wstring filePath;
-            WCHAR buffer[MAX_PATH] = { 0 }; // Allocate buffer
-            GetCurrentDirectory(MAX_PATH, buffer); // Get current directory
-            filePath=std::wstring(buffer) + L"\\test.txt";
+            std::wstring filePath = std::filesystem::current_path().wstring() + L"\\test.txt";
             std::wofstream writer(filePath, std::ios::out | std::ios::binary);
             if (writer.is_open()) {
                 DWORD pid = GetCurrentProcessId();
                 auto res = fmatrix::monitor::find_process(filePath);
+                fmatrix::type::process_info m{};
+                
                 Assert::AreEqual(pid, res[0].pid);
                 writer.close();
+                std::filesystem::remove(filePath);
+            }
+            else {
+                Assert::Fail();
+            }
+        }
+        TEST_METHOD(WrongFilePath)
+        {
+            std::wstring filePath = std::filesystem::current_path().wstring() + L"\\test.txt";
+            if (!std::filesystem::exists(filePath)) {
+                auto res = fmatrix::monitor::find_process(filePath);
+                Assert::AreEqual(res.size(), size_t(0));
+            }
+            else {
+                std::filesystem::remove(filePath);
+                auto res = fmatrix::monitor::find_process(filePath);
+                Assert::AreEqual(res.size(), size_t(0));
+            }
+        }
+        TEST_METHOD(FileNotUsed)
+        {
+            std::wstring filePath = std::filesystem::current_path().wstring() + L"\\test.txt";
+            std::wofstream writer(filePath, std::ios::out | std::ios::binary);
+            if (writer.is_open()) {
+                writer << "For Test.";
+                writer.close();
+                auto res = fmatrix::monitor::find_process(filePath);
+                Assert::IsFalse(res.size());
                 std::filesystem::remove(filePath);
             }
             else {
