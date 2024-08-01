@@ -8,12 +8,18 @@
 #define PCH_H
 
 // add headers that you want to pre-compile here
+#include <mutex>
+#include <memory>
+#include <thread>
+#include <future>
 #include <format>
 #include <string>
 #include <vector>
 #include <fstream>
+#include <optional>
 #include <iostream>
 #include <filesystem>
+#include <system_error>
 #include <source_location>
 
 #include "Windows.h"
