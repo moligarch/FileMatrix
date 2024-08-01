@@ -204,9 +204,10 @@
     <ClInclude Include="include\FileMatrix\fmwrite.h" />
   </ItemGroup>
   <ItemGroup>
-    <ClCompile Include="fmread.cpp" />
+    <ClCompile Include="lib\fmread.cpp" />
     <ClCompile Include="lib\fmdebug.cpp" />
     <ClCompile Include="lib\fmmonitor.cpp" />
+    <ClCompile Include="lib\fmwrite.cpp" />
     <ClCompile Include="lib\pch.cpp">
       <PrecompiledHeader Condition="'$(Configuration)|$(Platform)'=='Debug|x64'">Create</PrecompiledHeader>
       <PrecompiledHeader Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'">Create</PrecompiledHeader>

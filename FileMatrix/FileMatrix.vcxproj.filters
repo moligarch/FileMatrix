@@ -56,7 +56,10 @@
     <ClCompile Include="lib\fmmonitor.cpp">
       <Filter>Source Files\lib</Filter>
     </ClCompile>
-    <ClCompile Include="fmread.cpp">
+    <ClCompile Include="lib\fmread.cpp">
+      <Filter>Source Files\lib</Filter>
+    </ClCompile>
+    <ClCompile Include="lib\fmwrite.cpp">
       <Filter>Source Files\lib</Filter>
     </ClCompile>
   </ItemGroup>
