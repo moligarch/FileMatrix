@@ -1,5 +1,7 @@
 #pragma once
-
+#include <filesystem>
+#include <vector>
+#include <cstddef>
 
 namespace fmatrix
 {
@@ -9,5 +11,10 @@ namespace fmatrix
 
     namespace mtread //multi-thread read
     {
+        std::optional<std::vector<std::byte>> read_file(
+        /*__In__*/      const std::filesystem::path& file_path,
+        /*__In__*/      size_t thread_count,
+        /*__In_Out__*/  std::error_code& ec);
+
     } //namespace mtread
 }

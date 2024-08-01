@@ -56,3 +56,30 @@ namespace Monitor
         }
 	};
 }
+
+namespace MultiThreadRead {
+    TEST_CLASS(ReadFile) {
+        TEST_METHOD(MultipleThread) {
+            //StartUp
+            std::filesystem::path fPath{ "test.txt" };
+            std::ofstream writer(fPath, std::ios::out);
+            std::string sample{ "HELLO" };
+
+            for (const auto& ch : sample) {
+                for (int i{}; i<100 ; i++)
+                    writer << ch;
+                writer << "\n";
+            } // 510 character (10 char of \r \n)
+
+            writer.close();
+            std::error_code ec;
+            auto res = fmatrix::mtread::read_file(fPath, 5, ec);
+            Assert::IsTrue(ec.value() == 0);
+            Assert::IsTrue(res.has_value());
+            Assert::IsTrue(res.value().size() == 510);
+
+            //TearDown
+            std::filesystem::remove(fPath);
+        }
+    };
+}
