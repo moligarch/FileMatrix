@@ -1,6 +1,13 @@
 #include "pch.h"
 #include "FileMatrix/fmread.h"
 
+void MakeCapital(std::string& str)
+{
+    for (auto& chr : str)
+    {
+        chr = std::toupper(chr);
+    }
+}
 
 namespace FMatrix
 {
