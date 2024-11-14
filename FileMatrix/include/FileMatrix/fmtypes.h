@@ -20,7 +20,53 @@ namespace FMatrix {
         };
 
         class FMifstream : public std::basic_ifstream<std::byte> {
+        public:
+            // Constructor that takes a file path and opens the file
+            explicit FMifstream(std::filesystem::path file_path, std::ios_base::openmode mode = std::ios::in | std::ios::binary)
+                : file_path_(file_path), std::basic_ifstream<std::byte>(std::move(file_path), mode) {
+            }
+
+            // Destructor
+            ~FMifstream() {
+                if (this->is_open()) {
+                    this->close();
+                }
+            }
+
+            // Method to get the file path
+            const std::filesystem::path& get_path() const noexcept
+            {
+                return file_path_;
+            }
+
+        private:
+            std::filesystem::path& file_path_;  // Store the file path
         };
+
+        class FMofstream : public std::basic_ofstream<std::byte> {
+        public:
+            // Constructor that takes a file path and opens the file
+            explicit FMofstream(std::string file_path, std::ios_base::openmode mode = std::ios::out | std::ios::binary)
+                : file_path_(file_path), std::basic_ofstream<std::byte>(std::move(file_path), mode) {
+            }
+
+            // Destructor
+            ~FMofstream() {
+                if (this->is_open()) {
+                    this->close();
+                }
+            }
+
+            // Method to get the file path
+            const std::string& get_path() const noexcept 
+            {
+                return file_path_;
+            }
+
+        private:
+            std::string file_path_;  // Store the file path
+        };
+
     };
 
     using buffer_t = std::vector<std::byte>;
