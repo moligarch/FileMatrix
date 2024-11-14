@@ -1,6 +1,5 @@
 #include "pch.h"
 #include "FileMatrix/fmread.h"
-#include <span>
 
 
 namespace FMatrix
@@ -17,16 +16,16 @@ namespace FMatrix
         }
     }
 
+
     buffer_t Reader::Read()
     {
         if (!file_.good()) {
             return {};
         }
 
-        buffer_t result(type::FMifstream::_Iter(file_), {});
+        buffer_t result(Type::FMifstream::_Iter(file_), {});
         return result;
     }
-
     std::streamsize Reader::ReadChunk(buffer_t& buffer, size_t chunk_size)
     {
 
@@ -70,7 +69,7 @@ namespace FMatrix
         // Function to read a chunk of the file
         auto readfc = [&](size_t start, size_t end) -> void {
             file_.seekg(start);
-            auto data_span = std::span<std::byte>(result).subspan(start, end - start);
+            const auto data_span = std::span<std::byte>(result).subspan(start, end - start);
             file_.read(data_span.data(), data_span.size());
             };
 

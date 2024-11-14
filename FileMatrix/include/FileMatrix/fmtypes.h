@@ -6,7 +6,7 @@
 
 namespace FMatrix {
 
-    namespace type
+    namespace Type
     {
         struct process_info_
         {
@@ -33,6 +33,14 @@ namespace FMatrix {
                 }
             }
 
+            // Copy constructor
+            FMifstream(const FMifstream&) = default;
+            // Move constructor
+            FMifstream(FMifstream&&) noexcept = default;
+            // Copy assignment operator
+            FMifstream& operator=(const FMifstream&) = default;
+            // Move assignment operator
+            FMifstream& operator=(FMifstream&&) noexcept = default;
             // Method to get the file path
             const std::filesystem::path& get_path() const noexcept
             {
@@ -57,6 +65,15 @@ namespace FMatrix {
                 }
             }
 
+            // Copy constructor
+            FMofstream(const FMofstream&) = default;
+            // Move constructor
+            FMofstream(FMofstream&&) noexcept = default;
+            // Copy assignment operator
+            FMofstream& operator=(const FMofstream&) = default;
+            // Move assignment operator
+            FMofstream& operator=(FMofstream&&) noexcept = default;
+
             // Method to get the file path
             const std::string& get_path() const noexcept 
             {
@@ -69,6 +86,14 @@ namespace FMatrix {
 
     };
 
+    namespace Hash
+    {
+        enum class Algorithm
+        {
+            MD5,
+            SHA256
+        };
+    }
     using buffer_t = std::vector<std::byte>;
-    using process_info = type::process_info_;
+    using process_info = Type::process_info_;
 }

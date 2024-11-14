@@ -73,7 +73,7 @@ namespace MultiThreadRead {
 
             writer.close();
             std::error_code ec;
-            FMatrix::MTReader reader{ fPath, 5};
+            FMatrix::MT::Reader reader{ fPath, 5};
             auto res = reader.Read(ec);
             Assert::IsTrue(ec.value() == 0);
             Assert::IsTrue(res.size() == 510);

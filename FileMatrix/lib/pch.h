@@ -8,6 +8,7 @@
 #define PCH_H
 
 // add headers that you want to pre-compile here
+#include <span>
 #include <mutex>
 #include <memory>
 #include <thread>
