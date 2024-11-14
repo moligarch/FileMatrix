@@ -11,7 +11,7 @@ namespace FMatrix
 	{
 	public:
 		Reader() = delete;
-		Reader(std::filesystem::path file_path);
+		Reader(const std::filesystem::path& file_path);
 		~Reader();
 
 		buffer_t Read();
@@ -25,7 +25,7 @@ namespace FMatrix
 	{
 	public:
 		MTReader() = delete;
-		MTReader(std::filesystem::path file_path, size_t thread_count);
+		MTReader(const std::filesystem::path& file_path, size_t thread_count);
 		~MTReader();
 
 		buffer_t Read(std::error_code& ec);

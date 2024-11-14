@@ -5,7 +5,7 @@
 
 namespace FMatrix
 {
-    Reader::Reader(std::filesystem::path file_path) : file_(std::move(file_path))
+    Reader::Reader(const std::filesystem::path& file_path) : file_(file_path)
     {
         file_.exceptions(file_.goodbit);
     }
@@ -38,8 +38,8 @@ namespace FMatrix
     }
 
 
-    MTReader::MTReader(std::filesystem::path file_path, size_t thread_count) : 
-        file_(std::move(file_path)), thread_count_(thread_count)
+    MTReader::MTReader(const std::filesystem::path& file_path, size_t thread_count) :
+        file_(file_path), thread_count_(thread_count)
     {
         file_.exceptions(file_.goodbit);
     }
