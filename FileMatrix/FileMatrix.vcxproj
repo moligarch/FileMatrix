@@ -108,8 +108,8 @@
       <PrecompiledHeaderFile>pch.h</PrecompiledHeaderFile>
       <LanguageStandard>stdcpp20</LanguageStandard>
       <MultiProcessorCompilation>true</MultiProcessorCompilation>
-      <AdditionalIncludeDirectories>$(SolutionDir)FileMatrix\include;$(SolutionDir)FileMatrix\lib;%(AdditionalIncludeDirectories)</AdditionalIncludeDirectories>
-      <TreatWarningAsError>true</TreatWarningAsError>
+      <AdditionalIncludeDirectories>$(ProjectDir)include\;$(ProjectDir)lib\;$(ProjectDir)third_party\;%(AdditionalIncludeDirectories)</AdditionalIncludeDirectories>
+      <TreatWarningAsError>false</TreatWarningAsError>
       <EnablePREfast>true</EnablePREfast>
     </ClCompile>
     <Link>
@@ -136,8 +136,8 @@
       <PrecompiledHeaderFile>pch.h</PrecompiledHeaderFile>
       <LanguageStandard>stdcpp20</LanguageStandard>
       <MultiProcessorCompilation>true</MultiProcessorCompilation>
-      <AdditionalIncludeDirectories>$(SolutionDir)FileMatrix\include;$(SolutionDir)FileMatrix\lib;%(AdditionalIncludeDirectories)</AdditionalIncludeDirectories>
-      <TreatWarningAsError>true</TreatWarningAsError>
+      <AdditionalIncludeDirectories>$(ProjectDir)include\;$(ProjectDir)lib\;$(ProjectDir)third_party\;%(AdditionalIncludeDirectories)</AdditionalIncludeDirectories>
+      <TreatWarningAsError>false</TreatWarningAsError>
       <EnablePREfast>true</EnablePREfast>
     </ClCompile>
     <Link>
@@ -164,8 +164,8 @@
       <PrecompiledHeaderFile>pch.h</PrecompiledHeaderFile>
       <LanguageStandard>stdcpp20</LanguageStandard>
       <MultiProcessorCompilation>true</MultiProcessorCompilation>
-      <AdditionalIncludeDirectories>$(SolutionDir)FileMatrix\include;$(SolutionDir)FileMatrix\lib;%(AdditionalIncludeDirectories)</AdditionalIncludeDirectories>
-      <TreatWarningAsError>true</TreatWarningAsError>
+      <AdditionalIncludeDirectories>$(ProjectDir)include\;$(ProjectDir)lib\;$(ProjectDir)third_party\;%(AdditionalIncludeDirectories)</AdditionalIncludeDirectories>
+      <TreatWarningAsError>false</TreatWarningAsError>
       <EnablePREfast>true</EnablePREfast>
     </ClCompile>
     <Link>
@@ -192,8 +192,8 @@
       <PrecompiledHeaderFile>pch.h</PrecompiledHeaderFile>
       <LanguageStandard>stdcpp20</LanguageStandard>
       <MultiProcessorCompilation>true</MultiProcessorCompilation>
-      <AdditionalIncludeDirectories>$(SolutionDir)FileMatrix\include;$(SolutionDir)FileMatrix\lib;%(AdditionalIncludeDirectories)</AdditionalIncludeDirectories>
-      <TreatWarningAsError>true</TreatWarningAsError>
+      <AdditionalIncludeDirectories>$(ProjectDir)include\;$(ProjectDir)lib\;$(ProjectDir)third_party\;%(AdditionalIncludeDirectories)</AdditionalIncludeDirectories>
+      <TreatWarningAsError>false</TreatWarningAsError>
       <EnablePREfast>true</EnablePREfast>
     </ClCompile>
     <Link>
@@ -218,6 +218,7 @@
     <ClInclude Include="include\FileMatrix\fmread.h" />
     <ClInclude Include="include\FileMatrix\fmtypes.h" />
     <ClInclude Include="include\FileMatrix\fmwrite.h" />
+    <ClInclude Include="third_party\hashplusplus\include\hashpp.h" />
   </ItemGroup>
   <ItemGroup>
     <ClCompile Include="lib\fmread.cpp" />

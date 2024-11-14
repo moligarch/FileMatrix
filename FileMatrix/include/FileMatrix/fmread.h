@@ -23,6 +23,7 @@ namespace FMatrix
 		Reader& operator=(Reader&&) noexcept = default;
 
 		buffer_t Read();
+		bool GetHash(Hash::Algorithm algorithm, std::string& output);
 		std::streamsize ReadChunk(buffer_t& buffer, size_t chunk_size);
 
 	private:
@@ -33,7 +34,6 @@ namespace FMatrix
 		class Reader
 		{
 		public:
-			Reader() = delete;
 			Reader(const std::filesystem::path& file_path, size_t thread_count);
 			~Reader();
 

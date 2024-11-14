@@ -4,6 +4,8 @@
 #include <cstddef>
 #include <fstream>
 
+#include <hashplusplus/include/hashpp.h>
+
 namespace FMatrix {
 
     namespace Type
@@ -88,11 +90,7 @@ namespace FMatrix {
 
     namespace Hash
     {
-        enum class Algorithm
-        {
-            MD5,
-            SHA256
-        };
+        using Algorithm = hashpp::ALGORITHMS;
     }
     using buffer_t = std::vector<std::byte>;
     using process_info = Type::process_info_;

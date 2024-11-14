@@ -26,6 +26,17 @@ namespace FMatrix
         buffer_t result(Type::FMifstream::_Iter(file_), {});
         return result;
     }
+    bool Reader::GetHash(Hash::Algorithm algorithm, std::string& output)
+    {
+        output = hashpp::get::getFileHash(algorithm, file_.get_path().string()).getString();
+        MakeCapital(output);
+        if (output.empty())
+        {
+            return false;
+        }
+        
+        return true;
+    }
     std::streamsize Reader::ReadChunk(buffer_t& buffer, size_t chunk_size)
     {
 
