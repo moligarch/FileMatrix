@@ -22,6 +22,12 @@
     <Filter Include="Source Files\lib">
       <UniqueIdentifier>{e80c291c-25a8-4447-b55a-aa8089a33c0d}</UniqueIdentifier>
     </Filter>
+    <Filter Include="Third Party">
+      <UniqueIdentifier>{165effeb-f962-476e-95cf-8946f034f30d}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Third Party\Hash++">
+      <UniqueIdentifier>{a551237d-bf84-47ef-b9c4-bd27dd80dd1f}</UniqueIdentifier>
+    </Filter>
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="lib\pch.h">
@@ -44,6 +50,9 @@
     </ClInclude>
     <ClInclude Include="include\FileMatrix\fmwrite.h">
       <Filter>Header Files\include\FileMatrix</Filter>
+    </ClInclude>
+    <ClInclude Include="third_party\hashplusplus\include\hashpp.h">
+      <Filter>Third Party\Hash++</Filter>
     </ClInclude>
   </ItemGroup>
   <ItemGroup>

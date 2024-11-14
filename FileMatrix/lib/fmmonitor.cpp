@@ -7,17 +7,17 @@ namespace utility
 {
     std::string to_string(const std::wstring& wstr)
     {
-        int count = WideCharToMultiByte(CP_ACP, 0, wstr.c_str(), static_cast<int>(wstr.length()), NULL, 0, NULL, NULL);
+        const int count = WideCharToMultiByte(CP_ACP, 0, wstr.c_str(), int(wstr.length()), nullptr, 0, nullptr, nullptr);
         std::string str(count, 0);
-        WideCharToMultiByte(CP_ACP, 0, wstr.c_str(), -1, &str[0], count, NULL, NULL);
+        WideCharToMultiByte(CP_ACP, 0, wstr.c_str(), -1, &str.at(0), count, nullptr, nullptr);
         return str;
     }
 
     std::wstring to_wstring(const std::string& str)
     {
-        int count = MultiByteToWideChar(CP_ACP, 0, str.c_str(), static_cast<int>(str.length()), NULL, 0);
+        const int count = MultiByteToWideChar(CP_ACP, 0, str.c_str(), int(str.length()), nullptr, 0);
         std::wstring wstr(count, 0);
-        MultiByteToWideChar(CP_ACP, 0, str.c_str(), static_cast<int>(str.length()), &wstr[0], count);
+        MultiByteToWideChar(CP_ACP, 0, str.c_str(), int(str.length()), &wstr.at(0), count);
         return wstr;
     }
 
@@ -41,7 +41,7 @@ namespace utility
 
 #endif // _DEBUG
 
-namespace fmatrix {
+namespace FMatrix {
     namespace monitor
     {
         using process_info_list = std::vector<process_info>;
@@ -54,15 +54,15 @@ namespace fmatrix {
             }
 
             DWORD dwSession{};
-            WCHAR szSessionKey[CCH_RM_SESSION_KEY + 1]{};
-            DWORD dwError = RmStartSession(&dwSession, 0, szSessionKey);
+            auto szSessionKey = std::make_unique < WCHAR[] >(CCH_RM_SESSION_KEY + 1);
+            DWORD dwError = RmStartSession(&dwSession, 0, szSessionKey.get());
             if (dwError != ERROR_SUCCESS)
             {
                 RETURN(process_info_list, "Error: " + std::to_string(dwError), nullptr);
             }
 
             PCWSTR pszFile = filePath.c_str();
-            dwError = RmRegisterResources(dwSession, 1, &pszFile, 0, NULL, 0, NULL);
+            dwError = RmRegisterResources(dwSession, 1, &pszFile, 0, nullptr, 0, nullptr);
             if (dwError != ERROR_SUCCESS)
             {
                 RETURN(process_info_list, "Error: " + std::to_string(dwError), nullptr);
@@ -71,7 +71,7 @@ namespace fmatrix {
             DWORD dwReason{};
             UINT nProcInfoNeeded{};
             UINT nProcInfo{};
-            RmGetList(dwSession, &nProcInfoNeeded, &nProcInfo, NULL, &dwReason);
+            RmGetList(dwSession, &nProcInfoNeeded, &nProcInfo, nullptr, &dwReason);
             if (nProcInfoNeeded == 0)
             {
                 RETURN(process_info_list, "Finished With No Result.", nullptr);
@@ -91,9 +91,9 @@ namespace fmatrix {
 
             std::vector<process_info> result;
             for (UINT i = 0; i < nProcInfo; i++) {
-                result.emplace_back(process_info(
-                    rgpi[i].strAppName,
-                    rgpi[i].Process.dwProcessId));
+                const std::span<WCHAR> appName(rgpi.at(i).strAppName);
+                const unsigned long& pid{ rgpi.at(i).Process.dwProcessId };
+                result.emplace_back(process_info(appName.data(), pid));
             }
             RmEndSession(dwSession);
             RETURN(process_info_list, "Finished With No Result.", &result);

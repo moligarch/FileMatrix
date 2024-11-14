@@ -15,6 +15,6 @@
 #include <iostream>
 #include <filesystem>
 
-#include "Windows.h"
-#include "RestartManager.h"
+#include <Windows.h>
+#include <RestartManager.h>
 #endif //PCH_H

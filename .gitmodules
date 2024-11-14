@@ -1,0 +1,3 @@
+[submodule "FileMatrix/third_party/hashplusplus"]
+	path = FileMatrix/third_party/hashplusplus
+	url = https://github.com/D7EAD/HashPlusPlus.git
