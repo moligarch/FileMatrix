@@ -37,19 +37,20 @@ namespace FMatrix
         return file_.gcount();
     }
 
-
-    MTReader::MTReader(const std::filesystem::path& file_path, size_t thread_count) :
-        file_(file_path), thread_count_(thread_count)
+    namespace MT
     {
-        file_.exceptions(file_.goodbit);
-    }
-    MTReader::~MTReader()
+        Reader::Reader(const std::filesystem::path& file_path, size_t thread_count) :
+            file_(file_path), thread_count_(thread_count)
+        {
+            file_.exceptions(file_.goodbit);
+        }
+        Reader::~Reader()
     {
         if (file_.is_open()) {
             file_.close();
         }
     }
-    buffer_t MTReader::Read(std::error_code& ec)
+        buffer_t Reader::Read(std::error_code& ec)
     {
         // Check if the file exists and get its size
         if (!std::filesystem::exists(file_.get_path(), ec)) {
@@ -95,5 +96,6 @@ namespace FMatrix
 
 
         return result;
+    }
     }
 }
