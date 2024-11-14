@@ -15,7 +15,6 @@ namespace FMatrix
     {
         file_.exceptions(file_.goodbit);
     }
-
     Reader::~Reader()
     {
         if (file_.is_open()) {
@@ -33,6 +32,7 @@ namespace FMatrix
         buffer_t result(Type::FMifstream::_Iter(file_), {});
         return result;
     }
+
     bool Reader::GetHash(Hash::Algorithm algorithm, std::string& output)
     {
         output = hashpp::get::getFileHash(algorithm, file_.get_path().string()).getString();
@@ -44,6 +44,7 @@ namespace FMatrix
         
         return true;
     }
+
     std::streamsize Reader::ReadChunk(buffer_t& buffer, size_t chunk_size)
     {
 
@@ -67,6 +68,7 @@ namespace FMatrix
             file_.close();
         }
     }
+
         buffer_t Reader::Read(std::error_code& ec)
     {
         // Check if the file exists and get its size
@@ -114,5 +116,15 @@ namespace FMatrix
 
         return result;
     }
+
+        bool Reader::GetHash(Hash::Algorithm algorithm, std::string& output)
+        {
+            return false;
+        }
+
+        std::streamsize Reader::ReadChunk(buffer_t& buffer, size_t chunk_size)
+        {
+            return 0;
+        }
     }
 }

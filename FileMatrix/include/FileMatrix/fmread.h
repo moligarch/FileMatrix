@@ -31,7 +31,7 @@ namespace FMatrix
 	};
 	namespace MT
 	{
-		class Reader
+		class Reader final
 		{
 		public:
 			Reader(const std::filesystem::path& file_path, size_t thread_count);
@@ -49,7 +49,10 @@ namespace FMatrix
 			Reader& operator=(Reader&&) noexcept = default;
 			
 			buffer_t Read(std::error_code& ec);
-			//std::streamsize ReadChunk(buffer_t& buffer, size_t chunk_size);
+
+			bool GetHash(Hash::Algorithm algorithm, std::string& output);	// Not Implemented.
+
+			std::streamsize ReadChunk(buffer_t& buffer, size_t chunk_size); // Not Implemented.
 
 		private:
 			Type::FMifstream file_;
