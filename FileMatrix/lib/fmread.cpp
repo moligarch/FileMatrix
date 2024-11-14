@@ -2,6 +2,7 @@
 #include "FileMatrix/fmread.h"
 
 
+namespace FMatrix
 
 
 

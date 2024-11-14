@@ -1,21 +1,28 @@
 #pragma once
 #include <string>
+#include <vector>
+#include <cstddef>
+#include <fstream>
 
-namespace fmatrix {
+namespace FMatrix {
 
     namespace type
     {
-        struct process_info
+        struct process_info_
         {
             std::wstring name;
             unsigned long pid;
 
-            process_info(const std::wstring& n, unsigned long p) : name(n), pid(p) {}
-            process_info() : pid(0) {}
+            process_info_(const std::wstring& n, unsigned long p) : name(n), pid(p) {}
+            process_info_() noexcept : pid(0) {};
 
-            operator bool() const { return !name.empty() && pid != 0; }
+            operator bool() const noexcept { return !name.empty() && pid != 0; }
+        };
+
+        class FMifstream : public std::basic_ifstream<std::byte> {
         };
     };
 
-    using process_info = type::process_info;
+    using buffer_t = std::vector<std::byte>;
+    using process_info = type::process_info_;
 }

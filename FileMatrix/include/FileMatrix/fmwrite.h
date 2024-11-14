@@ -1,7 +1,7 @@
 #pragma once
 
 
-namespace fmatrix
+namespace FMatrix
 {
     namespace write
     {

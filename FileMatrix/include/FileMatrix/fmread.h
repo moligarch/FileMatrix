@@ -3,7 +3,9 @@
 #include <vector>
 #include <cstddef>
 
-namespace fmatrix
+#include "FileMatrix/fmtypes.h"
+
+namespace FMatrix
 {
     namespace read
     {

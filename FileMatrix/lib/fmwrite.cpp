@@ -3,7 +3,7 @@
 
 
 
-namespace fmatrix
+namespace FMatrix
 {
     namespace write
     {
